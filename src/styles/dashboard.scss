@@ -1,0 +1,51 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .location-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .location-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  // Media query for larger screens
+  @media (min-width: 768px) {
+    .location-list {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .location-item {
+      width: calc(33.33% - 10px); // Three items per row with some gap
+    }
+  }
+}
