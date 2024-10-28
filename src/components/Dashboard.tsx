@@ -17,7 +17,11 @@ const Dashboard = () => {
 			<div className="locations-container">
 				<div className="location-list">
 					{locations.map((location) => (
-						<Link key={location.id} to={`/details/${location.id}`}>
+						<Link
+							className="link-btn"
+							key={location.id}
+							to={`/details/${location.id}`}
+						>
 							<div className="location-item">
 								<span>{location.name}</span>
 								<span>{location.temp}°C</span>
