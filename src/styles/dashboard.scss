@@ -1,51 +1,53 @@
 .dashboard {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
+	display: flex;
+	flex-direction: column;
+	padding: 16px;
 
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+	h1 {
+		text-align: center;
+		margin-bottom: 20px;
+	}
 
-  .location-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+	.location-list {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
 
-  .location-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
+	.location-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 12px;
+		border: 1px solid #ccc;
+		border-radius: 8px;
+		background-color: #f9f9f9;
+		cursor: pointer;
+		transition: background-color 0.3s;
+		// width: 100%;
 
-    &:hover {
-      background-color: #e0e0e0;
-    }
+		&:hover {
+			background-color: #e0e0e0;
+		}
 
-    span {
-      font-size: 16px;
-    }
-  }
+		span {
+			font-size: 16px;
+		}
+	}
 
-  // Media query for larger screens
-  @media (min-width: 768px) {
-    .location-list {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-    }
+	// Media query for larger screens
+	@media (min-width: 768px) {
+		.location-list {
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			max-width: 64rem;
+			margin: auto;
+			gap: 0.75rem;
+		}
 
-    .location-item {
-      width: calc(33.33% - 10px); // Three items per row with some gap
-    }
-  }
+		a {
+			flex: 0 0 20.8125rem; // Three items per row with some gap
+		}
+	}
 }
