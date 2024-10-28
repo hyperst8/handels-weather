@@ -1,4 +1,4 @@
-import "@/styles/Dashboard.scss";
+import "@/styles/dashboard.scss";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {

@@ -1,0 +1,77 @@
+.details {
+	padding: 1rem;
+
+	.details-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+
+		.back-btn {
+			margin-top: 1rem;
+			svg {
+				width: 1.25rem;
+				height: 1.25rem;
+			}
+		}
+
+		h1 {
+			margin-block: 0;
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	.details-content {
+		margin-top: 3rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+
+		.weather-forecast {
+			min-width: 12.5rem;
+
+			.weather-type {
+				text-align: center;
+				font-size: 1.25rem;
+			}
+
+			.weather-degree {
+				text-align: center;
+				font-weight: 700;
+				font-size: 3rem;
+				margin-block: 0.25rem;
+			}
+
+			.degree-h-l {
+				display: flex;
+				justify-content: center;
+				gap: 1.5rem;
+				margin-bottom: 1rem;
+			}
+		}
+
+		.weather-info {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.5rem;
+
+			.weather-info-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin: 1rem auto;
+				flex: 0 0 5rem;
+			}
+		}
+	}
+
+	// Media query for larger screens
+	@media (min-width: 768px) {
+		.details-content {
+			flex-direction: row;
+			gap: 2rem;
+			justify-content: center;
+		}
+	}
+}
