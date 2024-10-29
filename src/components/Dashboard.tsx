@@ -1,7 +1,33 @@
 import "@/styles/dashboard.scss";
+import { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
-const Dashboard = () => {
+const Dashboard = (): JSX.Element => {
+	const [term, setTerm] = useState<string>("");
+
+	const getSearchOptions = (value: string) => {
+		fetch(
+			`http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${
+				import.meta.env.VITE_API_KEY
+			}`
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log({ data });
+			});
+	};
+
+	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value.trim();
+		setTerm(value);
+
+		if (value === "") return;
+
+		if (value && value.length > 2) {
+			getSearchOptions(value);
+		}
+	};
+
 	const locations = [
 		{ id: "my-location", name: "My location", temp: 14 },
 		{ id: "berlin", name: "Berlin", temp: 12 },
@@ -20,6 +46,7 @@ const Dashboard = () => {
 					className="location-search"
 					type="text"
 					placeholder="Search location"
+					onChange={onInputChange}
 				/>
 			</div>
 
