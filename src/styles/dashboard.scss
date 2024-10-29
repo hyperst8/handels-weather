@@ -1,6 +1,7 @@
 .dashboard {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	padding: 1rem;
 
 	h1 {
@@ -8,13 +9,23 @@
 		margin-bottom: 1.25rem;
 	}
 
-	.location-search {
-		margin: 2rem auto;
+	.search-container {
+		display: flex;
+		align-items: center;
+		max-width: 63rem;
 		width: 100%;
-		border-radius: 8px;
-		padding: 0.75rem;
+
+		.location-search {
+			margin: 2rem auto;
+			border-radius: 8px;
+			padding: 0.75rem;
+			width: 100%;
+		}
 	}
 
+	.locations-container {
+		width: 100%;
+	}
 	.location-list {
 		display: flex;
 		flex-direction: column;
@@ -48,10 +59,6 @@
 
 	// Media query for larger screens
 	@media (min-width: 768px) {
-		.location-search {
-			width: 60%;
-		}
-
 		.location-list {
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -62,7 +69,7 @@
 		}
 
 		a {
-			flex: 0 0 20.8125rem; // Three items per row with some gap
+			flex: 0 0 32%; // Three items per row with some gap
 		}
 	}
 }

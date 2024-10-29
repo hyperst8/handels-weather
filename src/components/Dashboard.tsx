@@ -15,11 +15,13 @@ const Dashboard = () => {
 		<div className="dashboard">
 			<h1>Dashboard</h1>
 
-			<input
-				className="location-search"
-				type="search"
-				placeholder="Search location"
-			/>
+			<div className="search-container">
+				<input
+					className="location-search"
+					type="text"
+					placeholder="Search location"
+				/>
+			</div>
 
 			<div className="locations-container">
 				<div className="location-list">
