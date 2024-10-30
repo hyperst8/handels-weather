@@ -8,6 +8,7 @@ const Dashboard = (): JSX.Element => {
 	const [term, setTerm] = useState<string>("");
 	const [location, setLocation] = useState<optionType | null>(null);
 	const [options, setOptions] = useState<[]>([]);
+	const [forecast, setForecast] = useState<forecastType | null>(null);
 
 	const getSearchOptions = (value: string) => {
 		fetch(
@@ -47,7 +48,7 @@ const Dashboard = (): JSX.Element => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				setForecast(data);
 			});
 	};
 
@@ -101,6 +102,12 @@ const Dashboard = (): JSX.Element => {
 					))}
 				</div>
 			</div>
+
+			{forecast && (
+				<div>
+					<p>Add forecast data to Link component</p>
+				</div>
+			)}
 		</div>
 	);
 };
