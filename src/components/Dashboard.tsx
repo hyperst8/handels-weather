@@ -1,10 +1,12 @@
 import "@/styles/dashboard.scss";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { optionType } from "../types";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 const Dashboard = (): JSX.Element => {
 	const [term, setTerm] = useState<string>("");
+	const [location, setLocation] = useState<optionType | null>(null);
 	const [options, setOptions] = useState<[]>([]);
 
 	const getSearchOptions = (value: string) => {
@@ -33,6 +35,35 @@ const Dashboard = (): JSX.Element => {
 		}
 	};
 
+	const onOptionSelect = (option: optionType) => {
+		setLocation(option);
+	};
+
+	const getForecast = (location: optionType) => {
+		fetch(
+			`https://api.openweathermap.org/data/2.5/weather?lat=${
+				location.lat
+			}&lon=${location.lon}&units=metric&appid=${import.meta.env.VITE_API_KEY}`
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+			});
+	};
+
+	const onSubmit = () => {
+		if (!location) return;
+
+		getForecast(location);
+	};
+
+	useEffect(() => {
+		if (location) {
+			setTerm(location.name);
+			setOptions([]);
+		}
+	}, [location]);
+
 	const locations = [
 		{ id: "my-location", name: "My location", temp: 14 },
 		{ id: "berlin", name: "Berlin", temp: 12 },
@@ -54,13 +85,15 @@ const Dashboard = (): JSX.Element => {
 					onChange={onInputChange}
 				/>
 				<button className={`search-btn ${term.length >= 2 ? "active" : ""}`}>
-					<PiMagnifyingGlassBold className="search-icon" />
+					<PiMagnifyingGlassBold className="search-icon" onClick={onSubmit} />
 				</button>
 				{options.length > 0 && (
 					<ul className="search-options">
-						{options.map((option: { name: string }, index: number) => (
-							<li key={index}>
-								<button>{option.name}</button>
+						{options.map((option: optionType, index: number) => (
+							<li key={index} onClick={() => onOptionSelect(option)}>
+								<button>
+									{option.name}, {option.country}
+								</button>
 							</li>
 						))}
 					</ul>
