@@ -1,6 +1,7 @@
 import "@/styles/dashboard.scss";
 import { ChangeEvent, useState } from "react";
 import { Link } from "react-router-dom";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 const Dashboard = (): JSX.Element => {
 	const [term, setTerm] = useState<string>("");
@@ -48,6 +49,9 @@ const Dashboard = (): JSX.Element => {
 					placeholder="Search location"
 					onChange={onInputChange}
 				/>
+				<button className={`search-btn ${term.length >= 2 ? "active" : ""}`}>
+					<PiMagnifyingGlassBold className="search-icon" />
+				</button>
 			</div>
 
 			<div className="locations-container">

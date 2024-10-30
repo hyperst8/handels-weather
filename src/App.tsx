@@ -1,5 +1,5 @@
-import Dashboard from "@/components/Dashboard";
-import Details from "@/components/Details";
+import Dashboard from "./components/Dashboard";
+import Details from "./components/Details";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 const App = (): JSX.Element => {
