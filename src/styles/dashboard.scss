@@ -38,6 +38,25 @@
 				height: 1.25rem;
 			}
 		}
+
+		.search-options {
+			position: absolute;
+			top: 5rem;
+			background-color: white;
+			width: 70%;
+			z-index: 10;
+			padding: 1rem;
+
+			list-style: none;
+
+			li {
+				padding: 0.5rem;
+				cursor: pointer;
+				&:hover {
+					background-color: var(--btn-bg-hover-color);
+				}
+			}
+		}
 	}
 
 	.locations-container {

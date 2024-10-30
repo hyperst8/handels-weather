@@ -5,6 +5,7 @@ import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 const Dashboard = (): JSX.Element => {
 	const [term, setTerm] = useState<string>("");
+	const [options, setOptions] = useState<[]>([]);
 
 	const getSearchOptions = (value: string) => {
 		fetch(
@@ -14,7 +15,7 @@ const Dashboard = (): JSX.Element => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log({ data });
+				setOptions(data);
 			});
 	};
 
@@ -22,7 +23,10 @@ const Dashboard = (): JSX.Element => {
 		const value = e.target.value.trim();
 		setTerm(value);
 
-		if (value === "") return;
+		if (value === "") {
+			setOptions([]);
+			return;
+		}
 
 		if (value && value.length > 2) {
 			getSearchOptions(value);
@@ -52,6 +56,15 @@ const Dashboard = (): JSX.Element => {
 				<button className={`search-btn ${term.length >= 2 ? "active" : ""}`}>
 					<PiMagnifyingGlassBold className="search-icon" />
 				</button>
+				{options.length > 0 && (
+					<ul className="search-options">
+						{options.map((option: { name: string }, index: number) => (
+							<li key={index}>
+								<button>{option.name}</button>
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 
 			<div className="locations-container">
