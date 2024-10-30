@@ -2,7 +2,7 @@ import "@/styles/dashboard.scss";
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { optionType } from "../types";
-import { PiMagnifyingGlassBold } from "react-icons/pi";
+import Search from "./helpers/Search";
 
 const Dashboard = (): JSX.Element => {
 	const [term, setTerm] = useState<string>("");
@@ -77,28 +77,13 @@ const Dashboard = (): JSX.Element => {
 		<div className="dashboard">
 			<h1>Dashboard</h1>
 
-			<div className="search-container">
-				<input
-					className="location-search"
-					type="text"
-					placeholder="Search location"
-					onChange={onInputChange}
-				/>
-				<button className={`search-btn ${term.length >= 2 ? "active" : ""}`}>
-					<PiMagnifyingGlassBold className="search-icon" onClick={onSubmit} />
-				</button>
-				{options.length > 0 && (
-					<ul className="search-options">
-						{options.map((option: optionType, index: number) => (
-							<li key={index} onClick={() => onOptionSelect(option)}>
-								<button>
-									{option.name}, {option.country}
-								</button>
-							</li>
-						))}
-					</ul>
-				)}
-			</div>
+			<Search
+				term={term}
+				options={options}
+				onInputChange={onInputChange}
+				onOptionSelect={onOptionSelect}
+				onSubmit={onSubmit}
+			/>
 
 			<div className="locations-container">
 				<div className="location-list">
