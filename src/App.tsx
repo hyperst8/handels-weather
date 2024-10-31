@@ -7,7 +7,7 @@ const App = (): JSX.Element => {
 		<Router>
 			<Routes>
 				<Route path="/" element={<Dashboard />} />
-				<Route path="/details/:locationId" element={<Details />} />
+				<Route path="/details/:lat/:lon" element={<Details />} />
 			</Routes>
 		</Router>
 	);
