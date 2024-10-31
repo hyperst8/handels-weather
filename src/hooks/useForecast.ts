@@ -20,7 +20,7 @@ const useForeCast = () => {
 	};
 
 	const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value.trim();
+		const value = e.target.value;
 		setTerm(value);
 
 		if (value === "") {
