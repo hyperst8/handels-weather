@@ -26,6 +26,7 @@ const Search = ({
 				type="text"
 				placeholder="Search location"
 				onChange={onInputChange}
+				value={term}
 			/>
 			<button className={`search-btn ${term.length >= 2 ? "active" : ""}`}>
 				<PiMagnifyingGlassBold className="search-icon" onClick={onSubmit} />
