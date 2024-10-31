@@ -1,10 +1,13 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import useForeCast from "../hooks/useForecast";
 import { IoArrowBackOutline } from "react-icons/io5";
 import "@/styles/details.scss";
 
 const Details = () => {
-	const navigate = useNavigate();
 	const { locationId } = useParams();
+	const { forecast, navigate } = useForeCast();
+
+	console.log(forecast);
 
 	return (
 		<div className="details">
