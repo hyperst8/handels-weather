@@ -49,6 +49,7 @@ const useForeCast = () => {
 			.then((data) => {
 				const forecastData = {
 					...data.city,
+					name: location.name, // Override city name with location name becaause the API returns the name of state instead of city name
 					list: data.list.slice(0, 16),
 				};
 				setForecast(forecastData);
@@ -57,7 +58,6 @@ const useForeCast = () => {
 
 	const onSubmit = () => {
 		if (!location) return;
-
 		getForecast(location);
 	};
 

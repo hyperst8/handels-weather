@@ -49,7 +49,7 @@ const Dashboard = (): JSX.Element => {
 			{forecast && (
 				<div>
 					<p>Add forecast data to Link component</p>
-					<p>{forecast.sunrise}</p>
+					<p>{forecast.name}</p>
 				</div>
 			)}
 		</div>
