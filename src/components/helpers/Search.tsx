@@ -1,4 +1,4 @@
-import "@/styles/dashboard.scss";
+import "@/styles/search.scss";
 
 import { ChangeEvent } from "react";
 import { optionType } from "../../types";
