@@ -1,11 +1,14 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { optionType, forecastType } from "../types";
+import { useNavigate } from "react-router-dom";
 
 const useForeCast = () => {
 	const [term, setTerm] = useState<string>("");
 	const [location, setLocation] = useState<optionType | null>(null);
 	const [options, setOptions] = useState<[]>([]);
 	const [forecast, setForecast] = useState<forecastType | null>(null);
+
+	const navigate = useNavigate();
 
 	const getSearchOptions = (value: string) => {
 		fetch(
@@ -58,6 +61,7 @@ const useForeCast = () => {
 
 	const onSubmit = () => {
 		if (!location) return;
+		navigate(`/details/${location.lat}/${location.lon}`);
 		getForecast(location);
 	};
 
@@ -75,6 +79,7 @@ const useForeCast = () => {
 		onInputChange,
 		onOptionSelect,
 		onSubmit,
+		navigate,
 	};
 };
 
