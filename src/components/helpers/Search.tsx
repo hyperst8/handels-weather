@@ -1,6 +1,6 @@
 import "@/styles/search.scss";
 
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { optionType } from "../../types";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 
@@ -19,6 +19,8 @@ const Search = ({
 	onOptionSelect,
 	onSubmit,
 }: SearchProps): JSX.Element => {
+	const [disabled, setDisabled] = useState<boolean>(true); // disabled search button if option not selected
+
 	return (
 		<div className="search-container">
 			<input
@@ -28,13 +30,22 @@ const Search = ({
 				onChange={onInputChange}
 				value={term}
 			/>
-			<button className={`search-btn ${term.length >= 2 ? "active" : ""}`}>
+			<button
+				className={`search-btn ${term.length >= 2 ? "active" : ""}`}
+				disabled={disabled}
+			>
 				<PiMagnifyingGlassBold className="search-icon" onClick={onSubmit} />
 			</button>
 			{options.length > 0 && (
 				<ul className="search-options">
 					{options.map((option: optionType, index: number) => (
-						<li key={index} onClick={() => onOptionSelect(option)}>
+						<li
+							key={index}
+							onClick={() => {
+								onOptionSelect(option);
+								setDisabled(false);
+							}}
+						>
 							<button>
 								{option.name}, {option.country}
 							</button>
