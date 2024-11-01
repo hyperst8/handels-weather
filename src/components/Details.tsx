@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import useForeCast from "../hooks/useForecast";
+import { formatHour, getSunTime } from "../helpers";
 
 const Details = (): JSX.Element => {
 	const { name, lat, lon } = useParams<{
@@ -32,13 +33,6 @@ const Details = (): JSX.Element => {
 	const { country, sunrise, sunset, list } = forecast;
 	const today = list[0];
 
-	// Function to format a timestamp into a human-readable time hour
-	const formatHour = (timestamp: number) => {
-		const date = new Date(timestamp * 1000).getHours();
-
-		return date;
-	};
-
 	return (
 		<div className="details">
 			<div className="details-header">
@@ -63,24 +57,39 @@ const Details = (): JSX.Element => {
 						<span className="h-l">H: {Math.ceil(today.main.temp_max)} °C</span>
 						<span className="h-l">L: {Math.floor(today.main.temp_min)} °C</span>
 					</div>
+					<div className="feels-like">
+						<span className="feels-like-label">Feels like: </span>
+						<span className="feels-like-value">
+							{Math.round(today.main.feels_like)} °C
+						</span>
+						<br />
+						<span>
+							Feels{" "}
+							{Math.round(today.main.feels_like) < Math.round(today.main.temp)
+								? "colder"
+								: "warmer"}
+						</span>
+					</div>
 				</div>
 				{/* Render weather infon like sunrise, sunset, humidity, visibility */}
 				<div className="weather-info">
 					<div className="weather-info-item">
 						<span className="weather-info-label">Sunrise</span>
-						<span className="weather-info-value">06:00</span>
+						<span className="weather-info-value">{getSunTime(sunrise)}</span>
 					</div>
 					<div className="weather-info-item">
 						<span className="weather-info-label">Sunset</span>
-						<span className="weather-info-value">20:20</span>
+						<span className="weather-info-value">{getSunTime(sunset)}</span>
 					</div>
 					<div className="weather-info-item">
 						<span className="weather-info-label">Humidity</span>
-						<span className="weather-info-value">75%</span>
+						<span className="weather-info-value">{today.main.humidity}%</span>
 					</div>
 					<div className="weather-info-item">
 						<span className="weather-info-label">Visibility</span>
-						<span className="weather-info-value">10 km</span>
+						<span className="weather-info-value">
+							{(today.visibility / 1000).toFixed()} km
+						</span>
 					</div>
 				</div>
 			</div>
