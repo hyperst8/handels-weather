@@ -98,7 +98,7 @@ const Details = (): JSX.Element => {
 				{list.map((item, index) => (
 					<div key={index} className="weather-forecast-item">
 						<p className="weather-forecast-day">
-							{index === 0 ? "Nå" : formatHour(item.dt)}
+							{index === 0 ? "Now" : formatHour(item.dt)}
 						</p>
 						<img
 							src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`}
