@@ -18,6 +18,10 @@
 			margin-block: 0;
 			width: 100%;
 			text-align: center;
+
+			.countryLabel {
+				font-weight: 400;
+			}
 		}
 	}
 
@@ -75,6 +79,28 @@
 				.weather-info-label {
 					font-weight: 600;
 				}
+			}
+		}
+	}
+
+	.weather-forecast-list {
+		display: flex;
+		gap: 2rem;
+		overflow-x: scroll;
+		max-width: 600px;
+		margin: 2rem auto;
+		padding-inline: 1rem;
+
+		.weather-forecast-item {
+			text-align: center;
+
+			.weather-forecast-type {
+				height: 2lh;
+			}
+
+			.weather-forecast-day,
+			.weather-forecast-degree {
+				font-weight: 700;
 			}
 		}
 	}
