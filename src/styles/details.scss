@@ -1,120 +1,123 @@
 .details {
-	padding: 1rem;
+  padding: 1rem;
 
-	.details-header {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
+  .details-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 
-		.back-btn {
-			margin-top: 1rem;
-			svg {
-				width: 1.25rem;
-				height: 1.25rem;
-			}
-		}
+    .back-btn {
+      margin-top: 1rem;
+      svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
 
-		h1 {
-			margin-block: 0;
-			width: 100%;
-			text-align: center;
+    h1 {
+      margin-block: 0;
+      width: 100%;
+      text-align: center;
 
-			.countryLabel {
-				font-weight: 400;
-			}
-		}
-	}
+      .countryLabel {
+        font-weight: 400;
+      }
+    }
+  }
 
-	.details-content {
-		margin-top: 3rem;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
+  .details-content {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 
-		.weather-forecast {
-			min-width: 12.5rem;
+    .weather-forecast {
+      min-width: 12.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-			.weather-type {
-				text-align: center;
-				font-size: 1.25rem;
-			}
+      .weather-type {
+        text-align: center;
+        font-size: 1.25rem;
+      }
 
-			.weather-degree {
-				text-align: center;
-				font-weight: 700;
-				font-size: 3rem;
-				margin-block: 0.25rem;
-			}
+      .weather-degree {
+        text-align: center;
+        font-weight: 700;
+        font-size: 3rem;
+        margin-block: 0.25rem;
+      }
 
-			.degree-h-l {
-				display: flex;
-				justify-content: center;
-				gap: 1.5rem;
-				margin-bottom: 1rem;
-			}
+      .degree-h-l {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
 
-			.feels-like {
-				text-align: center;
-			}
-		}
+      .feels-like {
+        text-align: center;
+      }
+    }
 
-		.weather-info {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.5rem;
+    .weather-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
 
-			.weather-info-item {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				margin: 1rem auto;
-				padding: 1.25rem;
-				flex: 0 0 6rem;
+      .weather-info-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem auto;
+        padding: 1.25rem;
+        flex: 0 0 6rem;
 
-				// frosted glass effect
-				background: rgba(117, 110, 110, 0.2);
-				border-radius: 16px;
-				box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-				backdrop-filter: blur(5px);
-				-webkit-backdrop-filter: blur(5px);
-				border: 1px solid rgba(255, 255, 255, 0.3);
+        // frosted glass effect
+        background: rgba(117, 110, 110, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
 
-				.weather-info-label {
-					font-weight: 600;
-				}
-			}
-		}
-	}
+        .weather-info-label {
+          font-weight: 600;
+        }
+      }
+    }
+  }
 
-	.weather-forecast-list {
-		display: flex;
-		gap: 2rem;
-		overflow-x: scroll;
-		max-width: 600px;
-		margin: 2rem auto;
-		padding-inline: 1rem;
+  .weather-forecast-list {
+    display: flex;
+    gap: 2rem;
+    overflow-x: scroll;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding-inline: 1rem;
 
-		.weather-forecast-item {
-			text-align: center;
+    .weather-forecast-item {
+      text-align: center;
 
-			.weather-forecast-type {
-				height: 2lh;
-			}
+      .weather-forecast-type {
+        height: 2lh;
+      }
 
-			.weather-forecast-day,
-			.weather-forecast-degree {
-				font-weight: 700;
-			}
-		}
-	}
+      .weather-forecast-day,
+      .weather-forecast-degree {
+        font-weight: 700;
+      }
+    }
+  }
 
-	// Media query for larger screens
-	@media (min-width: 768px) {
-		.details-content {
-			flex-direction: row;
-			gap: 2rem;
-			justify-content: center;
-		}
-	}
+  // Media query for larger screens
+  @media (min-width: 768px) {
+    .details-content {
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: center;
+    }
+  }
 }
