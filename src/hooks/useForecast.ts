@@ -117,6 +117,7 @@ const useForeCast = () => {
     handleOptionClick,
     highlightedIndex,
     changeUnit,
+    unit,
   };
 };
 
