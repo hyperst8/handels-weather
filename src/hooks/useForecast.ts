@@ -60,9 +60,9 @@ const useForeCast = () => {
       });
   };
 
-  const onSubmit = () => {
-    if (!location) return;
-    navigate(`/details/${location.name}/${location.lat}/${location.lon}`);
+  const onSubmit = (option: optionType) => {
+    if (!option) return;
+    navigate(`/details/${option.name}/${option.lat}/${option.lon}`);
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -80,14 +80,13 @@ const useForeCast = () => {
       // Trigger onSelect for the highlighted option
       const selectedOption = options[highlightedIndex];
       onOptionSelect(selectedOption);
-      onSubmit(); // Navigate to Details page
+      onSubmit(selectedOption); // Navigate to Details page
       setHighlightedIndex(-1); // Reset highlight index after selection
     }
   };
 
   const handleOptionClick = (option: optionType) => {
-    onOptionSelect(option);
-    onSubmit();
+    onSubmit(option);
     setHighlightedIndex(-1);
   };
 
@@ -105,7 +104,6 @@ const useForeCast = () => {
     getForecast,
     onInputChange,
     onOptionSelect,
-    onSubmit,
     navigate,
     handleKeyDown,
     handleOptionClick,

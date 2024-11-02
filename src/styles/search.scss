@@ -41,11 +41,8 @@
     list-style: none;
 
     li {
-      display: flex; // Ensures the entire row is clickable
-      align-items: center; // Centers content vertically
       padding: 0.5rem;
       cursor: pointer;
-      pointer-events: all;
       width: 100%;
       &:hover,
       &.highlighted {
