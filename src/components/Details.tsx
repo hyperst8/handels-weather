@@ -11,7 +11,7 @@ const Details = (): JSX.Element => {
     lat: string;
     lon: string;
   }>();
-  const { getForecast, forecast, navigate } = useForeCast();
+  const { getForecast, forecast, navigate, changeUnit } = useForeCast();
 
   useEffect(() => {
     if (lat && lon) {
@@ -24,6 +24,19 @@ const Details = (): JSX.Element => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, lat, lon]);
+
+  const handleUnitChange = (unit: string) => {
+    changeUnit(unit);
+    if (lat && lon) {
+      // Re-fetch forecast data when unit changes
+      getForecast({
+        lat: parseFloat(lat),
+        lon: parseFloat(lon),
+        name: name || "",
+        country: "",
+      });
+    }
+  };
 
   if (!forecast) {
     return <div>Loading...</div>;
@@ -46,6 +59,10 @@ const Details = (): JSX.Element => {
         <h1>
           {forecast.name}, <span className="countryLabel">{country}</span>
         </h1>
+      </div>
+      <div className="unit-buttons">
+        <button onClick={() => handleUnitChange("metric")}>°C</button>
+        <button onClick={() => handleUnitChange("imperial")}>°F</button>
       </div>
       {/* Render detailed weather information for the selected location here */}
       <div className="details-content">

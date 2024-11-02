@@ -8,6 +8,7 @@ const useForeCast = () => {
   const [options, setOptions] = useState<[]>([]);
   const [forecast, setForecast] = useState<forecastType | null>(null);
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
+  const [unit, setUnit] = useState<string>("metric");
 
   const navigate = useNavigate();
 
@@ -45,7 +46,7 @@ const useForeCast = () => {
     fetch(
       `https://api.openweathermap.org/data/2.5/forecast?lat=${
         location.lat
-      }&lon=${location.lon}&units=metric&lang=en&appid=${
+      }&lon=${location.lon}&units=${unit}&lang=en&appid=${
         import.meta.env.VITE_API_KEY
       }`
     )
@@ -90,6 +91,13 @@ const useForeCast = () => {
     setHighlightedIndex(-1);
   };
 
+  const changeUnit = (newUnit: string) => {
+    setUnit(newUnit);
+    if (location) {
+      getForecast(location);
+    }
+  };
+
   useEffect(() => {
     if (location) {
       setTerm(location.name);
@@ -108,6 +116,7 @@ const useForeCast = () => {
     handleKeyDown,
     handleOptionClick,
     highlightedIndex,
+    changeUnit,
   };
 };
 
