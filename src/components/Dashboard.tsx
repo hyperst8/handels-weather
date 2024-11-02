@@ -19,7 +19,7 @@ const Dashboard = (): JSX.Element => {
 
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
+      <h1>Handelsbanken Weather</h1>
 
       <Search
         term={term}
