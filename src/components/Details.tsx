@@ -4,6 +4,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import { formatHour, getSunTime } from "../helpers";
 import useForeCast from "../hooks/useForecast";
+import Degree from "./helpers/Degree";
 
 const Details = (): JSX.Element => {
   const { name, lat, lon } = useParams<{
@@ -11,22 +12,9 @@ const Details = (): JSX.Element => {
     lat: string;
     lon: string;
   }>();
-  const { getForecast, forecast, navigate, changeUnit } = useForeCast();
+  const { getForecast, forecast, navigate, changeUnit, unit } = useForeCast();
 
   useEffect(() => {
-    if (lat && lon) {
-      getForecast({
-        lat: parseFloat(lat),
-        lon: parseFloat(lon),
-        name: name || "",
-        country: "",
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [name, lat, lon]);
-
-  const handleUnitChange = (unit: string) => {
-    changeUnit(unit);
     if (lat && lon) {
       // Re-fetch forecast data when unit changes
       getForecast({
@@ -36,7 +24,8 @@ const Details = (): JSX.Element => {
         country: "",
       });
     }
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [name, lat, lon, unit]);
 
   if (!forecast) {
     return <div>Loading...</div>;
@@ -61,8 +50,8 @@ const Details = (): JSX.Element => {
         </h1>
       </div>
       <div className="unit-buttons">
-        <button onClick={() => handleUnitChange("metric")}>°C</button>
-        <button onClick={() => handleUnitChange("imperial")}>°F</button>
+        <button onClick={() => changeUnit("metric")}>°C</button>
+        <button onClick={() => changeUnit("imperial")}>°F</button>
       </div>
       {/* Render detailed weather information for the selected location here */}
       <div className="details-content">
@@ -73,15 +62,21 @@ const Details = (): JSX.Element => {
             src={`http://openweathermap.org/img/wn/${today.weather[0].icon}@2x.png`}
             alt={`weather-icon-${today.weather[0].description}`}
           />
-          <p className="weather-degree">{Math.round(today.main.temp)} °C</p>
+          <p className="weather-degree">
+            {Math.round(today.main.temp)} <Degree unit={unit} />
+          </p>
           <div className="degree-h-l">
-            <span className="h-l">H: {Math.ceil(today.main.temp_max)} °C</span>
-            <span className="h-l">L: {Math.floor(today.main.temp_min)} °C</span>
+            <span className="h-l">
+              H: {Math.ceil(today.main.temp_max)} <Degree unit={unit} />
+            </span>
+            <span className="h-l">
+              L: {Math.floor(today.main.temp_min)} <Degree unit={unit} />
+            </span>
           </div>
           <div className="feels-like">
             <span className="feels-like-label">Feels like: </span>
             <span className="feels-like-value">
-              {Math.round(today.main.feels_like)} °C
+              {Math.round(today.main.feels_like)} <Degree unit={unit} />
             </span>
             <br />
             <span>
@@ -132,7 +127,7 @@ const Details = (): JSX.Element => {
               {item.weather[0].description}
             </p>
             <p className="weather-forecast-degree">
-              {Math.round(item.main.temp)} °C
+              {Math.round(item.main.temp)} <Degree unit={unit} />
             </p>
           </div>
         ))}
