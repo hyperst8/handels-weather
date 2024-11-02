@@ -5,8 +5,14 @@ import useForecast from "../hooks/useForecast";
 import Search from "./helpers/Search";
 
 const Dashboard = (): JSX.Element => {
-  const { term, options, onInputChange, onOptionSelect, onSubmit } =
-    useForecast();
+  const {
+    term,
+    options,
+    onInputChange,
+    handleKeyDown,
+    handleOptionClick,
+    highlightedIndex,
+  } = useForecast();
 
   const locations = [
     { id: "my-location", name: "My location", temp: 14 },
@@ -25,8 +31,9 @@ const Dashboard = (): JSX.Element => {
         term={term}
         options={options}
         onInputChange={onInputChange}
-        onOptionSelect={onOptionSelect}
-        onSubmit={onSubmit}
+        handleKeyDown={handleKeyDown}
+        handleOptionClick={handleOptionClick}
+        highlightedIndex={highlightedIndex}
       />
 
       <div className="locations-container">

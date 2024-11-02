@@ -29,7 +29,7 @@ const Details = (): JSX.Element => {
     return <div>Loading...</div>;
   }
 
-  console.log(forecast);
+  // console.log(forecast);
   const { country, sunrise, sunset, list } = forecast;
   const today = list[0];
 
