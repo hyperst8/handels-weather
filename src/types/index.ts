@@ -42,3 +42,12 @@ export type forecastType = {
 		}
 	];
 };
+
+export type weatherType = {
+	name: string;
+	country: string;
+	temp: number;
+	lat: number;
+	lon: number;
+	id: number;
+};

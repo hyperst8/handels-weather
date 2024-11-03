@@ -1,12 +1,15 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { forecastType, optionType } from "../types";
+import { forecastType, optionType, weatherType } from "../types";
 
 const useForeCast = () => {
 	const [term, setTerm] = useState<string>("");
 	const [location, setLocation] = useState<optionType | null>(null);
 	const [options, setOptions] = useState<[]>([]);
 	const [forecast, setForecast] = useState<forecastType | null>(null);
+	const [currentWeather, setCurrentWeather] = useState<weatherType | null>(
+		null
+	);
 	const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
 	const [unit, setUnit] = useState<string>("metric");
 
@@ -58,6 +61,28 @@ const useForeCast = () => {
 					list: data.list.slice(0, 16),
 				};
 				setForecast(forecastData);
+			});
+	};
+
+	const getCurrentWeather = (location: optionType) => {
+		fetch(
+			`https://api.openweathermap.org/data/2.5/weather?lat=${
+				location.lat
+			}&lon=${location.lon}&units=${unit}&lang=en&appid=${
+				import.meta.env.VITE_API_KEY
+			}`
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				const weaterData = {
+					name: location.name,
+					country: data.sys.country,
+					temp: data.main.temp,
+					lat: location.lat,
+					lon: location.lon,
+					id: data.sys.id,
+				};
+				setCurrentWeather(weaterData);
 			});
 	};
 
@@ -118,7 +143,9 @@ const useForeCast = () => {
 		term,
 		options,
 		forecast,
+		currentWeather,
 		getForecast,
+		getCurrentWeather,
 		onInputChange,
 		onOptionSelect,
 		navigate,

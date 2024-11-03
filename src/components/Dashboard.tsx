@@ -1,8 +1,8 @@
 import "@/styles/dashboard.scss";
-import { Link } from "react-router-dom";
 import useForecast from "../hooks/useForecast";
 
 import Search from "./helpers/Search";
+import LocationItem from "./helpers/LocationItem";
 
 const Dashboard = (): JSX.Element => {
 	const {
@@ -16,28 +16,22 @@ const Dashboard = (): JSX.Element => {
 
 	const locations = [
 		{
-			id: 7576815,
 			name: "Berlin",
 			country: "DE",
-			temp: 12,
-			lat: 52.52,
-			lon: 13.41,
+			lat: 52.5170365,
+			lon: 13.3888599,
 		},
 		{
-			id: 2643743,
 			name: "London",
 			country: "GB",
-			temp: 10,
-			lat: 51.51,
-			lon: -0.13,
+			lat: 51.5073219,
+			lon: -0.1276474,
 		},
 		{
-			id: "1861060",
 			name: "Tokyo",
 			country: "JP",
-			temp: 15,
-			lat: 35.69,
-			lon: 139.69,
+			lat: 35.6828387,
+			lon: 139.7594549,
 		},
 	];
 
@@ -56,17 +50,14 @@ const Dashboard = (): JSX.Element => {
 
 			<div className="locations-container">
 				<div className="location-list">
-					{locations.map((location) => (
-						<Link
-							className="link-btn"
-							key={location.id}
-							to={`/details/${location.name}/${location.lat}/${location.lon}`}
-						>
-							<div className="location-item">
-								<span>{location.name}</span>
-								<span>{location.temp}°C</span>
-							</div>
-						</Link>
+					{locations.map((location, index) => (
+						<LocationItem
+							key={index}
+							name={location.name}
+							country={location.country}
+							lat={location.lat}
+							lon={location.lon}
+						/>
 					))}
 				</div>
 			</div>
