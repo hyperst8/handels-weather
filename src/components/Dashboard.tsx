@@ -15,11 +15,30 @@ const Dashboard = (): JSX.Element => {
 	} = useForecast();
 
 	const locations = [
-		{ id: "berlin", name: "Berlin", temp: 12, lat: 52.52, lon: 13.41 },
-		{ id: "london", name: "London", temp: 10, lat: 51.51, lon: -0.13 },
-		{ id: "paris", name: "Paris", temp: 11, lat: 48.86, lon: 2.35 },
-		{ id: "tokyo", name: "Tokyo", temp: 15, lat: 35.69, lon: 139.69 },
-		{ id: "new-york", name: "New York", temp: 13, lat: 40.71, lon: -74.01 },
+		{
+			id: 7576815,
+			name: "Berlin",
+			country: "DE",
+			temp: 12,
+			lat: 52.52,
+			lon: 13.41,
+		},
+		{
+			id: 2643743,
+			name: "London",
+			country: "GB",
+			temp: 10,
+			lat: 51.51,
+			lon: -0.13,
+		},
+		{
+			id: "1861060",
+			name: "Tokyo",
+			country: "JP",
+			temp: 15,
+			lat: 35.69,
+			lon: 139.69,
+		},
 	];
 
 	return (
