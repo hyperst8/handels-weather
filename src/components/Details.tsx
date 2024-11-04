@@ -1,5 +1,5 @@
 import "@/styles/details.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
 import { formatHour, getSunTime } from "../helpers";
@@ -13,6 +13,7 @@ const Details = (): JSX.Element => {
     lon: string;
   }>();
   const { getForecast, forecast, navigate, changeUnit, unit } = useForeCast();
+  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     if (lat && lon) {
@@ -27,12 +28,58 @@ const Details = (): JSX.Element => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name, lat, lon, unit]);
 
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage("");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [message]);
+
+  const addToDashboard = () => {
+    if (!forecast) return; // prevent accessing properties of null
+
+    const storedLocations = JSON.parse(
+      localStorage.getItem("locations") || "[]"
+    );
+
+    type LocationType = {
+      id: number;
+      name: string;
+      country: string;
+      lat: number;
+      lon: number;
+    };
+
+    const locationExists = storedLocations.some(
+      (location: LocationType) => location.id === forecast.id
+    );
+
+    if (locationExists) {
+      setMessage("Location already added");
+      return;
+    }
+
+    const newLocation = {
+      id: forecast.id,
+      name: forecast.name,
+      country: forecast.country,
+      lat: lat,
+      lon: lon,
+    };
+
+    const updatedLocations = [...storedLocations, newLocation];
+    localStorage.setItem("locations", JSON.stringify(updatedLocations));
+    setMessage("Location added to dashboard");
+  };
+
   if (!forecast) {
     return <div className="loading">Loading...</div>;
   }
 
   // console.log(forecast);
-  const { id, country, sunrise, sunset, list } = forecast;
+  const { country, sunrise, sunset, list } = forecast;
   const today = list[0];
 
   return (
@@ -62,6 +109,15 @@ const Details = (): JSX.Element => {
         >
           °F
         </button>
+      </div>
+      <div className="add-to-dashboard">
+        <button
+          onClick={addToDashboard}
+          className="add-to-dashboard-btn"
+        >
+          Add to dashboard
+        </button>
+        {message && <p className="message">{message}</p>}
       </div>
       {/* Render detailed weather information for the selected location here */}
       <div className="details-content">
