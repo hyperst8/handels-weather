@@ -1,6 +1,7 @@
 import "@/styles/dashboard.scss";
 import useForecast from "../hooks/useForecast";
 
+import { useEffect, useState } from "react";
 import LocationItem from "./helpers/LocationItem";
 import Search from "./helpers/Search";
 
@@ -14,7 +15,7 @@ const Dashboard = (): JSX.Element => {
     highlightedIndex,
   } = useForecast();
 
-  const locations = [
+  const defaultLocations = [
     {
       id: 7576815,
       name: "Berlin",
@@ -37,6 +38,26 @@ const Dashboard = (): JSX.Element => {
       lon: 139.7594549,
     },
   ];
+
+  // State to hold locations from localStorage
+  const [locations, setLocations] = useState<
+    Array<(typeof defaultLocations)[0]>
+  >([]);
+
+  useEffect(() => {
+    // Check if locations are stored in localStorage
+    const storedLocations = localStorage.getItem("locations");
+
+    if (storedLocations) {
+      // Parse and set the locations from localStorage
+      setLocations(JSON.parse(storedLocations));
+    } else {
+      // Store the default locations in localStorage and set them in state
+      localStorage.setItem("locations", JSON.stringify(defaultLocations));
+      setLocations(defaultLocations);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="dashboard">
