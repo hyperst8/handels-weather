@@ -77,7 +77,7 @@ A component for searching and selecting locations. Provides an input field with 
 
 **Details**
 
-Displays detailed weather information for a selected location, including current temperature, high/low temperatures, feels like temperature, humidity, sunrise/sunset times, and a 5-day forecast.
+Displays detailed weather information for a selected location, including current temperature, high/low temperatures, feels like temperature, humidity, sunrise/sunset times, and a hours forecast.
 
 - **Props**: None
 - **State**: Pulls in forecast data and manages unit toggle.
