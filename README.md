@@ -21,19 +21,11 @@ Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
 
 1. Clone the repository:
 
-bash
-
-Kopier kode
-
 git clone <https://github.com/your-username/weather-app.git>
 
 cd weather-app
 
 1. Install dependencies:
-
-bash
-
-Kopier kode
 
 npm install
 
@@ -43,17 +35,9 @@ yarn install
 
 1. Create a .env file in the root directory with your OpenWeatherMap API key:
 
-plaintext
-
-Kopier kode
-
 VITE_API_KEY=your_openweathermap_api_key
 
 1. Start the development server:
-
-bash
-
-Kopier kode
 
 npm run dev
 
@@ -134,7 +118,7 @@ Custom hook that handles the core functionality of fetching and managing weather
 
 **Styling Documentation**
 
-The app is styled with **SCSS** and **Tailwind CSS** to provide a clean and responsive layout.
+The app is styled with **SCSS** to provide a clean and responsive layout.
 
 - **dashboard.scss**: Styles for the dashboard page layout, including the search bar and location list.
 - **details.scss**: Styles for the details page, including weather information, forecast items, and unit switch buttons.
@@ -147,8 +131,12 @@ The app is styled with **SCSS** and **Tailwind CSS** to provide a clean and resp
 **Potential Improvements**
 
 1. **Error Handling**: Display user-friendly error messages if the API request fails or if the user enters an invalid location.
-2. **Unit Persistence**: Store the selected unit in local storage to persist preferences across sessions.
-3. **Advanced Forecast Details**: Add hourly forecast data and more metrics, such as wind speed and precipitation.
-4. **Interactive Map**: Integrate a map view with location pins, allowing users to select locations by clicking on the map.
-5. **User Authentication**: Allow users to create accounts and save personalized location lists to a database.
-6. **Dark Mode**: Add a dark mode toggle for enhanced readability in low-light conditions.
+2. **Advanced Forecast Details**: Add hourly forecast data and more metrics, such as wind speed and precipitation.
+3. **Dark Mode**: Add a dark mode toggle for enhanced readability in low-light conditions.
+4. **Details component**: Refactor the Details component to be more modular and reusable.
+5. **Remove location from Dashboard**: Add a button to remove a location from the dashboard.
+6. **Current Location Button**: Add a button on Dashboard to quickly fetch the weather for the user's current position.
+
+**Bug Reports**
+
+- **Unit issue on re-rennder or refresh**: When the unit is changed, the temperature value is not updated immediately.
