@@ -21,7 +21,7 @@ Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
 
 1. Clone the repository:
 
-git clone <https://github.com/your-username/weather-app.git>
+git clone <https://github.com/hyperst8/handels-weather.git>
 
 cd weather-app
 
