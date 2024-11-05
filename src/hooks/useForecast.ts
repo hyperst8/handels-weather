@@ -129,6 +129,8 @@ const useForeCast = () => {
 		const storedUnit = localStorage.getItem("unit");
 		if (storedUnit) {
 			setUnit(storedUnit);
+		} else {
+			setUnit("metric");
 		}
 	}, []);
 
