@@ -136,7 +136,9 @@ The app is styled with **SCSS** to provide a clean and responsive layout.
 4. **Details component**: Refactor the Details component to be more modular and reusable.
 5. **Remove location from Dashboard**: Add a button to remove a location from the dashboard.
 6. **Current Location Button**: Add a button on Dashboard to quickly fetch the weather for the user's current position.
+7. **Switch between languages**: Add a language toggle for users who prefer different languages using i18n. Hard-coded text can be replaced with dynamic translations.
+8. **Stylish layout**: Enhance the layout with more colorful design, animations and transitions for a more engaging user experience.
 
 **Bug Reports**
 
-- **Unit issue on re-rennder or refresh**: When the unit is changed, the temperature value is not updated immediately.
+- **Unit issue on re-render or refresh**: When the unit is changed, the temperature value is not updated immediately.
