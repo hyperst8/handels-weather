@@ -25,7 +25,7 @@ git clone <https://github.com/your-username/weather-app.git>
 
 cd weather-app
 
-1. Install dependencies:
+2. Install dependencies:
 
 npm install
 
@@ -33,11 +33,11 @@ npm install
 
 yarn install
 
-1. Create a .env file in the root directory with your OpenWeatherMap API key:
+3. Create a .env file in the root directory with your OpenWeatherMap API key:
 
 VITE_API_KEY=your_openweathermap_api_key
 
-1. Start the development server:
+4. Start the development server:
 
 npm run dev
 
